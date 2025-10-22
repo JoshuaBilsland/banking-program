@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class Main {
+    static Scanner scanner = new Scanner(System.in);  // Declared in class scope so all methods can use it
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         double balance = 0;
         boolean isRunning = true;
         int choice;
@@ -20,7 +20,7 @@ public class Main {
 
             switch(choice){
                 case 1 -> showBalance(balance);
-                case 2 -> System.out.println("DEPOSIT");
+                case 2 -> balance = balance + deposit();
                 case 3 -> System.out.println("WITHDRAW");
                 case 4 -> isRunning = false;
                 default -> System.out.println("INVALID CHOICE");
@@ -36,5 +36,19 @@ public class Main {
         %.2f is for floating point to two digits after the decimal
         \n for new line
         */
+    }
+
+    static double deposit(){ // double means it will return a value (of type double)
+        double amount;
+        System.out.print("Enter an amount to be deposited: ");
+        amount = scanner.nextDouble();
+
+        if(amount < 0){
+            System.out.println("ERROR: Amount cannot be negative!");
+            return 0;
+        }
+        else{
+            return amount;
+        }
     }
 }
